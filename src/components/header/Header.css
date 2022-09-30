@@ -1,0 +1,111 @@
+header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  margin-bottom: 10px;
+  -webkit-box-shadow: 0px 6px 6px 0px rgba(177,177,179,1);
+  -moz-box-shadow: 0px 6px 6px 0px rgba(177,177,179,1);
+  box-shadow: 0px 6px 6px 0px rgba(177,177,179,1);
+}
+header h1{
+  font-weight: 100;
+  font-size: 1.2em;
+}
+header h1 span{
+  color: red;
+  font-weight: 400;
+}
+
+header .logo{
+  display: inline-block;
+  width: 40px;
+  margin-right: 10px;
+  vertical-align: middle;
+  position: relative;
+  top: -3px;
+}
+@media all and (max-width: 600px) {
+  header{
+    flex-flow: column;
+  }
+  .search-form{
+    margin: 10px 5px;
+  }
+}
+
+/* search */
+.search-form {
+  display: flex;
+  font-weight: 400;
+  column-gap: 8px;
+  align-items: center;
+}
+
+.search {
+  border-radius: 24px;
+  border: 1px solid #a9a9a9;
+  font-size: 14px;
+  padding: 4px 8px;
+}
+.search:focus{
+  outline: 1.5px solid tomato;
+}
+
+.search-button {
+  height: 24px;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.1s ease-in;
+}
+
+.search-button:hover,
+.search-button:focus {
+  background-color: #eaeaea;
+}
+
+.button {
+  background: #56009b;
+  color: white;
+  font-size: 14px;
+  border: none;
+  border-radius: 30px;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+/* Photowall/Posts toggle button  */
+#photoWallButton{
+    background-color: #fca494;
+    border-radius: 100px;
+    box-shadow: rgba(249,154,143, .2) 0 -25px 18px -14px inset,rgba(249,154,143, .15) 0 1px 2px,rgba(249,154,143, .15) 0 2px 4px,rgba(249,154,143, .15) 0 4px 8px,rgba(249,154,143, .15) 0 8px 16px,rgba(249,154,143, .15) 0 16px 32px;
+    color: #841300;
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 18px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 250ms;
+    border: 0;
+    font-size: 16px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+#photoWallButton:hover {
+    box-shadow: rgba(249,154,143,.35) 0 -25px 18px -14px inset,
+    rgba(249,154,143,.25) 0 1px 2px,
+    rgba(249,154,143,.25) 0 2px 4px,
+    rgba(249,154,143,.25) 0 4px 8px,
+    rgba(249,154,143,.25) 0 8px 16px,
+    rgba(249,154,143,.25) 0 16px 32px;
+}
