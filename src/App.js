@@ -8,8 +8,10 @@ function App() {
         const el = document.getElementById("aside");
         el.classList.contains("visible") === true ? el.classList.remove("visible") : el.classList.add("visible");
     }
-    const getPosts = () => {
+    const getPosts = (e) => {
         toggleAside();
+        console.log(e.target.innerText);
+        document.getElementById('posts').firstChild.innerHTML = e.target.innerText;
     }
     //PhotoWall
     const togglePhotoWall = () => {
@@ -74,7 +76,7 @@ function App() {
     return (
         <div className="wrapper">
             <header>
-                <button className="aside-toggle" type="button" onClick={toggleAside}></button>
+                <button id="aside-toggle" type="button" onClick={toggleAside}></button>
                 <h1><img src={logo} className="logo" alt="logo" />Sub<span>reddit</span>Reader</h1>
                 <form className="search-form"> {/* See react > adopt-a-pet > components - search */}
                     <label for="search">Search:</label>
@@ -86,10 +88,50 @@ function App() {
             <article className="main">
                 <section id="posts">
                     <h2>Posts</h2>
-                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+                    <article className="post">
+                        <h3>Post title</h3>
+                        <div class="postContent">
+                            <p>Post text goes here... (if any) Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis efficitur enim a purus commodo pharetra. In hac habitasse platea dictumst. Nunc lorem ante, lacinia at volutpat quis, aliquet id ipsum. Nulla et elit elementum, tristique turpis sit amet, lacinia lorem.</p>
+                        </div>
+                        <div class="postImage">
+                            <img src="https://loremflickr.com/300/400" alt="" />
+                        </div>
+                        <footer>
+                            <p>Up votes: 1.3k</p>
+                            <p>Posted x ago</p>
+                            <p><span class="icon">&#9997;</span> 25</p>
+                        </footer>
+                    </article>
+                    <article className="post">
+                        <h3>Post title</h3>
+                        <div class="postContent">
+                            <p>Post text goes here... (if any) Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis efficitur enim a purus commodo pharetra. In hac habitasse platea dictumst. Nunc lorem ante, lacinia at volutpat quis, aliquet id ipsum. Nulla et elit elementum, tristique turpis sit amet, lacinia lorem.</p>
+                        </div>
+                        <div class="postImage">
+                        </div>
+                        <footer>
+                            <p>Votes: 1.3k</p>
+                            <p>Posted x ago</p>
+                            <p><span class="icon">&#9997;</span> 25</p>
+                        </footer>
+                    </article>
+                    <article className="post">
+                        <h3>Post title</h3>
+                        <div class="postContent">
+                            <p>Post text goes here... (if any) Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis efficitur enim a purus commodo pharetra. In hac habitasse platea dictumst. Nunc lorem ante, lacinia at volutpat quis, aliquet id ipsum. Nulla et elit elementum, tristique turpis sit amet, lacinia lorem.</p>
+                        </div>
+                        <div class="postImage">
+                            <img src="https://loremflickr.com/1400/800" alt="" />
+                        </div>
+                        <footer>
+                            <p>Votes: 1.3k</p>
+                            <p>Posted x ago</p>
+                            <p><span class="icon">&#9997;</span> 25</p>
+                        </footer>
+                    </article>
                 </section>
                 <section id="photoWall">
-                <h2>Photo Wall</h2>
+                    <h2>Photo Wall</h2>
                     <section id="photos">
                         <img onClick={showSlideShow} src="https://loremflickr.com/2510/3000" alt="" />
                         <img onClick={showSlideShow} src="https://loremflickr.com/3520/3500" alt="" />
@@ -121,13 +163,20 @@ function App() {
                 </section>
             </article>
             <aside id="aside" className="aside visible">
-                <h2>Subreddits</h2>
+                <h2>Sub<span>reddit</span>s</h2>
                 <ul>
-                    <li onClick={getPosts}>img photography</li>
-                    <li onClick={getPosts}>img dogs</li>
-                    <li onClick={getPosts}>img CrayzyStuff</li>
-                    <li onClick={getPosts}>img Landscape Photograpy and some more long words</li>
-                    <li onClick={getPosts}>img another one</li>
+                    <li onClick={getPosts}>
+                        <img src="https://loremflickr.com/32/32" alt="" /> Dogs
+                    </li>
+                    <li onClick={getPosts}>
+                        <img src="https://loremflickr.com/32/32" alt="" /> Photography
+                    </li>
+                    <li onClick={getPosts}>
+                        <img src="https://loremflickr.com/32/32" alt="" /> CrayzeeStuff
+                    </li>
+                    <li onClick={getPosts}>
+                        <img src="https://loremflickr.com/32/32" alt="" /> Cats
+                    </li>
                 </ul>
             </aside>
             <footer className="footer">
