@@ -9,7 +9,7 @@ function Header(props) {
             <button id="aside-toggle" type="button" onClick={toggleAside}></button>
             <h1><img src={logo} className="logo" alt="logo" />Sub<span>reddit</span>Reader</h1>
             <form className="search-form"> {/* See react > adopt-a-pet > components - search */}
-                <label for="search">Search:</label>
+                <label htmlFor="search">Search:</label>
                 <input type="text" id="search" className="search" />
                 <button type="submit" className="search-button">🔎</button>
             </form>

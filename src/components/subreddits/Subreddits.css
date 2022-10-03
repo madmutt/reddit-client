@@ -2,9 +2,28 @@
     text-align: left;
     font-weight: 400;
 }
+#aside li{
+    padding: 0 1rem;
+    line-height: 2.5;
+}
 #aside li:hover{
     cursor: pointer;
     color: tomato;
+}
+#aside li.selected{
+    background: linear-gradient(to bottom right, #EF4765, #FF9A5A);
+    border: 0;
+    color: #fff;
+    line-height: 2.8;
+    outline: transparent;
+    transition: box-shadow .2s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+}
+#aside li.selected:hover{
+    cursor: default;
 }
 
 #aside-toggle{
@@ -51,6 +70,8 @@
 }
 #aside ul li img{
   vertical-align: middle;
+  width: 32px;
+  height: 32px;
   border-radius: 16px;
 }
 

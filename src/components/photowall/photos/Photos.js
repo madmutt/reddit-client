@@ -26,7 +26,7 @@ function Photos(props) {
     return (
         <section id="photos">
             {
-                photos.map(photo => <img onClick={showSlideShow} src={photo} alt="" />)
+                photos.map((photo,i) => <img key={i} onClick={showSlideShow} src={photo} alt="" />)
             }
         </section>
     );
