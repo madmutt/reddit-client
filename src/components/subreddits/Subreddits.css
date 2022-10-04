@@ -4,7 +4,7 @@
 }
 #aside li{
     padding: 0 1rem;
-    line-height: 2.5;
+    line-height: 2.6;
 }
 #aside li:hover{
     cursor: pointer;
@@ -14,7 +14,6 @@
     background: linear-gradient(to bottom right, #EF4765, #FF9A5A);
     border: 0;
     color: #fff;
-    line-height: 2.8;
     outline: transparent;
     transition: box-shadow .2s ease-in-out;
     user-select: none;

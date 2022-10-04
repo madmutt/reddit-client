@@ -1,27 +1,17 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 function Photos(props) {
     const {showSlideShow} = props;
+    const photos = useSelector((state) => state.posts.photos);
 
-    const photos = [
-            "https://loremflickr.com/2510/3000",
-            "https://loremflickr.com/3520/3500",
-            "https://loremflickr.com/2530/3000",
-            "https://loremflickr.com/3540/3500",
-            "https://loremflickr.com/1550/1500",
-            "https://loremflickr.com/2560/3000",
-            "https://loremflickr.com/1570/1500",
-            "https://loremflickr.com/2580/3000",
-            "https://loremflickr.com/3590/3500",
-            "https://loremflickr.com/2500/3010",
-            "https://loremflickr.com/3500/3520",
-            "https://loremflickr.com/1500/1530",
-            "https://loremflickr.com/2500/3040",
-            "https://loremflickr.com/3500/3550",
-            "https://loremflickr.com/3500/3560",
-            "https://loremflickr.com/1500/1570",
-            "https://loremflickr.com/2500/3080",
-            "https://loremflickr.com/3500/3590"];
+    if (photos.length === 0) {
+        return (
+            <section id="photos" style={{overflow: "visible"}}>
+                <p style={{paddingTop: 15}}>Sorry, no photos.</p>
+            </section>                
+        );
+    }
 
     return (
         <section id="photos">

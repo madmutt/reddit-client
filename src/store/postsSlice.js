@@ -20,6 +20,7 @@ export const postsSlice = createSlice({
     name: "posts",
     initialState: {
         posts: [],
+        photos: [],
         error: false,
         isLoading: false,
     },
@@ -31,6 +32,11 @@ export const postsSlice = createSlice({
         },
         [loadPosts.fulfilled]: (state, action) => {
             state.posts = action.payload;
+            //state.photos = action.payload.map(post => post.img);
+            const photos = action.payload.map(post => post.img.match(/^https?:\/\/.*\/.*\.(png|gif|webp|jpeg|jpg)\??.*$/gmi) ? post.img : null);
+            state.photos = photos.filter(element => {
+                              return element !== null;
+                            });
             state.isLoading = false;
             state.hasError = false;
         },
