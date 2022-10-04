@@ -17,10 +17,15 @@ export const subredditsSlice = createSlice({
     name: "subreddits",
     initialState: {
         subreddits: [],
+        subreddit: '',
         error: false,
         isLoading: false,
     },
-    reducers: {},
+    reducers: {
+        updateSubreddit: (state, action) => {
+            state.subreddit = action.payload;
+        }        
+    },
     extraReducers: {
         [loadSubreddits.pending]: (state, action) => {
           state.isLoading = true;
@@ -38,4 +43,5 @@ export const subredditsSlice = createSlice({
     }
 });
 
+export const { updateSubreddit } = subredditsSlice.actions;
 export default subredditsSlice.reducer;

@@ -13,7 +13,7 @@ function Search(props) {
     return (
         <form onSubmit={onSearchHandler} className="search-form"> {/* See react > adopt-a-pet > components - search */}
             <label htmlFor="search">Search:</label>
-            <input type="text" id="search" className="search" />
+            <input type="text" id="search" className="search" autoComplete="off" />
             <button type="submit" className="search-button">🔎</button>
         </form>
         );

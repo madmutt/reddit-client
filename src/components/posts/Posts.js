@@ -1,51 +1,56 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Posts.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadPosts } from "../../store/postsSlice";
+import Post from "./post/Post";
 
 function Posts() {
+    const dispatch = useDispatch();
+    const subreddit = useSelector((state) => state.subreddits.subreddit);
+    
+    const posts = useSelector((state) => state.posts);
+
+    const { isLoading, error } = posts;
+
+    useEffect(() => {
+        dispatch(loadPosts(subreddit));
+    }, [dispatch, subreddit]);
+
+    if (isLoading) {
+        return (
+            <section id="posts">
+                <h2>Posts</h2>
+                <article className="post">
+                    <p>Loading</p>
+                </article>
+            </section>            
+        );
+    }
+
+    if (error) {
+        return (
+            <section id="posts">
+                <h2>Posts</h2>
+                <p>Error failed to load posts.</p>
+            </section>            
+        );
+    }
+
+    if (posts.posts.length === 0) {
+        return (
+            <section id="posts">
+                <h2>Posts</h2>
+                <p style={{marginLeft:10}}>Sorry no posts.</p>
+            </section>                
+        );
+    }
+
     return (
         <section id="posts">
-            <h2>Posts</h2>
-            <article className="post">
-                <h3>Post title</h3>
-                <div className="postContent">
-                    <p>Post text goes here... (if any) Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis efficitur enim a purus commodo pharetra. In hac habitasse platea dictumst. Nunc lorem ante, lacinia at volutpat quis, aliquet id ipsum. Nulla et elit elementum, tristique turpis sit amet, lacinia lorem.</p>
-                </div>
-                <div className="postImage">
-                    <img src="https://loremflickr.com/300/400" alt="" />
-                </div>
-                <footer>
-                    <p>Up votes: 1.3k</p>
-                    <p>Posted x ago</p>
-                    <p><span className="icon">&#9997;</span> 25</p>
-                </footer>
-            </article>
-            <article className="post">
-                <h3>Post title</h3>
-                <div className="postContent">
-                    <p>Post text goes here... (if any) Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis efficitur enim a purus commodo pharetra. In hac habitasse platea dictumst. Nunc lorem ante, lacinia at volutpat quis, aliquet id ipsum. Nulla et elit elementum, tristique turpis sit amet, lacinia lorem.</p>
-                </div>
-                <div className="postImage">
-                </div>
-                <footer>
-                    <p>Votes: 1.3k</p>
-                    <p>Posted x ago</p>
-                    <p><span className="icon">&#9997;</span> 25</p>
-                </footer>
-            </article>
-            <article className="post">
-                <h3>Post title</h3>
-                <div className="postContent">
-                    <p>Post text goes here... (if any) Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis efficitur enim a purus commodo pharetra. In hac habitasse platea dictumst. Nunc lorem ante, lacinia at volutpat quis, aliquet id ipsum. Nulla et elit elementum, tristique turpis sit amet, lacinia lorem.</p>
-                </div>
-                <div className="postImage">
-                    <img src="https://loremflickr.com/1400/800" alt="" />
-                </div>
-                <footer>
-                    <p>Votes: 1.3k</p>
-                    <p>Posted x ago</p>
-                    <p><span className="icon">&#9997;</span> 25</p>
-                </footer>
-            </article>
+            <h2>{subreddit.charAt(3).toUpperCase() + subreddit.slice(4).replace(/.$/, '')}</h2>
+            {
+                posts.posts.map((post,i) => <Post key={i} title={post.title} content={post.content} img={post.img} upvotes={post.num_ups} created={post.created} num_comments={post.num_comments} />)
+            }
         </section>
     );
 }

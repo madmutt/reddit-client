@@ -3,11 +3,13 @@ import './Subreddits.css';
 import Subreddit from "./subreddit/Subreddit";
 import { useDispatch, useSelector } from 'react-redux';
 import { loadSubreddits } from "../../store/subredditsSlice";
+import { updateSubreddit } from "../../store/subredditsSlice";
 
 function Subreddits(props) {
     const {getPosts} = props;
     const dispatch = useDispatch();
     const subreddits = useSelector((state) => state.subreddits);
+    const subreddit = subreddits.subreddits[0] ? subreddits.subreddits[0].url : '';
     let searchTerm = useSelector((state) => state.search.searchTerm);
     if(searchTerm === ''){searchTerm = "Cats";}
 
@@ -15,7 +17,8 @@ function Subreddits(props) {
 
     useEffect(() => {
         dispatch(loadSubreddits(searchTerm));
-    }, [dispatch, searchTerm]);
+        dispatch(updateSubreddit(subreddit));
+    }, [dispatch, searchTerm, subreddit]);
 
     if (isLoading) {
         return (
@@ -30,7 +33,7 @@ function Subreddits(props) {
         return (
             <aside id="aside" className="aside visible">
                 <h2>Sub<span>reddit</span>s</h2>
-                <p>Error failed to load posts.</p>
+                <p>Error failed to load subreddits.</p>
                 <button
                     type="button"
                     onClick={() => dispatch(loadSubreddits(searchTerm))}
