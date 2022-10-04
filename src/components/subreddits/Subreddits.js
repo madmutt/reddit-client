@@ -8,14 +8,14 @@ function Subreddits(props) {
     const {getPosts} = props;
     const dispatch = useDispatch();
     const subreddits = useSelector((state) => state.subreddits);
+    let searchTerm = useSelector((state) => state.search.searchTerm);
+    if(searchTerm === ''){searchTerm = "Cats";}
 
     const { isLoading, error } = subreddits;
 
-    const term = "cats";
-
     useEffect(() => {
-        dispatch(loadSubreddits(term));
-    }, [dispatch]);
+        dispatch(loadSubreddits(searchTerm));
+    }, [dispatch, searchTerm]);
 
     if (isLoading) {
         return (
@@ -33,7 +33,7 @@ function Subreddits(props) {
                 <p>Error failed to load posts.</p>
                 <button
                     type="button"
-                    onClick={() => dispatch(loadSubreddits(term))}
+                    onClick={() => dispatch(loadSubreddits(searchTerm))}
                 >
                 Try again
                 </button>
@@ -45,7 +45,7 @@ function Subreddits(props) {
         return (
                 <aside id="aside" className="aside visible">
                     <h2>Sub<span>reddit</span>s</h2>
-                    <p>Nothing available for {term}.</p>
+                    <p>Nothing available for {searchTerm}.</p>
                     <p>Please try something else.</p>
                 </aside>
             );
