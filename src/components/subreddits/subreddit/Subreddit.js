@@ -5,7 +5,7 @@ function Subreddit(props) {
 
     return (
         <li onClick={getPosts} className={selected}>
-            <img src={icon} alt="" /> {text}
+            <img src={icon} alt="" />{text}
         </li>
         );
 }

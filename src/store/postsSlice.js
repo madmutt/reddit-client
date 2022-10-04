@@ -5,7 +5,7 @@ export const loadPosts = createAsyncThunk(
     "posts/getAllposts",
     async (subreddit) => {
         if(subreddit === ''){
-            return;
+            return [];
         }
         const data = [];
         const response = await fetch(`${base_URL}${subreddit}.json`);
@@ -30,7 +30,7 @@ export const postsSlice = createSlice({
             state.hasError = false;
         },
         [loadPosts.fulfilled]: (state, action) => {
-            state.posts = action.payload ? action.payload : [];
+            state.posts = action.payload;
             state.isLoading = false;
             state.hasError = false;
         },

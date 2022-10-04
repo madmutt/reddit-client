@@ -5,8 +5,12 @@ import Posts from "./components/posts/Posts";
 import Photowall from "./components/photowall/Photowall";
 import Subreddits from "./components/subreddits/Subreddits";
 import Footer from "./components/footer/Footer";
+import { useDispatch } from 'react-redux';
+import { updateSubreddit } from "./store/subredditsSlice";
 
 function App() {
+    const dispatch = useDispatch();
+
     //Show/hide subreddits
     const toggleAside = () => {
         const el = document.getElementById("aside");
@@ -49,7 +53,8 @@ function App() {
         siblings.map(elem => elem.classList.remove("selected"));
         e.target.classList.add("selected");
 
-        document.getElementById('posts').firstChild.innerHTML = e.target.innerText;
+        //document.getElementById('posts').firstChild.innerHTML = e.target.innerText.charAt(1).toUpperCase() + e.target.innerText.slice(2);
+        dispatch(updateSubreddit("/r/" + e.target.innerText + "/"));
     }
 
     //fullscreen slideshow

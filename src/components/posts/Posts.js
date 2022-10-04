@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import Skeleton from 'react-loading-skeleton';
 import './Posts.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadPosts } from "../../store/postsSlice";
@@ -19,9 +20,9 @@ function Posts() {
     if (isLoading) {
         return (
             <section id="posts">
-                <h2>Posts</h2>
+                <h2><Skeleton width={200} /></h2>
                 <article className="post">
-                    <p>Loading</p>
+                    <p><Skeleton count={10} /></p>
                 </article>
             </section>            
         );
@@ -39,8 +40,10 @@ function Posts() {
     if (posts.posts.length === 0) {
         return (
             <section id="posts">
-                <h2>Posts</h2>
-                <p style={{marginLeft:10}}>Sorry no posts.</p>
+                <h2>
+                <Skeleton width={200}  />
+                </h2>
+                <p style={{marginLeft:10}}><Skeleton count={10} /></p>
             </section>                
         );
     }

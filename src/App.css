@@ -22,3 +22,24 @@
     #aside   { order: 2; }
     .footer  { order: 3; }
 }
+
+.react-loading-skeleton{
+    display: inline-block;
+    background-color: #e0e0e0;
+    width: 100%;
+    animation: flash 5s;
+}
+
+@keyframes flash {
+  0% { opacity: 1; }
+  10% { opacity: 0; }
+  20% { opacity: 1; }
+  30% { opacity: 0; }
+  40% { opacity: 1; }
+  50% { opacity: 0; }
+  60% { opacity: 1; }
+  70% { opacity: 0; }
+  80% { opacity: 1; }
+  90% { opacity: 0; }
+  100% { opacity: 0; }
+}
