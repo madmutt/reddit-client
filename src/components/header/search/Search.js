@@ -14,7 +14,7 @@ function Search(props) {
         <form onSubmit={onSearchHandler} className="search-form"> {/* See react > adopt-a-pet > components - search */}
             <label htmlFor="search">Search:</label>
             <input type="text" id="search" className="search" autoComplete="off" />
-            <button type="submit" className="search-button">🔎</button>
+            <button type="submit" className="search-button"><span role="img" aria-label="search">🔎</span></button>
         </form>
         );
 }

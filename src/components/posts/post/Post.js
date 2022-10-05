@@ -1,12 +1,20 @@
 import React from 'react';
+import { Remarkable } from 'remarkable';
+import DOMPurify from 'dompurify';
 import moment from 'moment';
 
 function Post(props) {
+    const md = new Remarkable();
+    const content = md.render(props.content);
+    const sanitizedContent = () => ({
+        __html: DOMPurify.sanitize(content)
+    });
+
     return (
         <article className="post">
             <h3>{props.title}</h3>
             <div className="postContent">
-                <p>{props.content}</p>
+                <div dangerouslySetInnerHTML={sanitizedContent()} />
             </div>
             <div className="postImage">
                 <img src={props.img} alt="" />
