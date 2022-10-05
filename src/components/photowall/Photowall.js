@@ -8,7 +8,7 @@ function Photowall(props) {
 
     return (
     <section id="photoWall">
-        <h2>Photo Wall</h2>
+        <h2>Photo<span>Wall</span></h2>
         <Photos showSlideShow={showSlideShow} />
         <Slideshow 
             hideSlideShow={hideSlideShow} 
